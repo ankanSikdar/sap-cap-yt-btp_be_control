@@ -14,6 +14,27 @@ class ControllerService extends cds.ApplicationService {
             console.log('AFTER READ Request: ', req);
             console.log('AFTER READ Results: ', results);
         })
+
+        this.before("CREATE", "Assesments", (req) => {
+            const data = req.data;
+
+            if (data.StartDate > data.EndDate) {
+                req.error({
+                    code: 501,
+                    message: 'End Date cannot be earlier than Start Date',
+                    target: 'in/EndDate'
+                });
+            }
+
+            if (data.DueDate < data.EndDate) {
+                req.error({
+                    code: 501,
+                    message: 'Due Date cannot be earlier than End Date',
+                    target: 'in/DueDate'
+                });
+            }
+        })
+
         return super.init();
     }
 }
