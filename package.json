@@ -2,10 +2,16 @@
   "name": "btp_be_control",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "^9"
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "@sap/hana-client": "^2.29.23",
+    "@sap/xssec": "^4.13.0",
+    "hdb": "^2.29.5",
+    "passport": "^0.7.0"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2.4"
+    "@cap-js/sqlite": "^2.4",
+    "@sap/cds-dk": "^9"
   },
   "scripts": {
     "start": "cds-serve"
