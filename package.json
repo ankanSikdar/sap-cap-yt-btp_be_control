@@ -17,5 +17,26 @@
   "scripts": {
     "start": "cds-serve"
   },
-  "private": true
+  "private": true,
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana"
+      },
+      "auth": {
+        "kind": "basic",
+        "users": {
+          "admin": {
+            "password": "admin",
+            "roles": [
+              "authenticated-user"
+            ]
+          }
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  }
 }
