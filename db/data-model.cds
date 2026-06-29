@@ -2,6 +2,17 @@ namespace com.cntrl;
 
 using {cuid} from '@sap/cds/common';
 
+entity Media : cuid {
+    @Core.mediatype: mediaType
+    content: LargeBinary;
+
+    @Core.IsMediaType: true
+    mediaType: String;
+
+    @Core.ContentDisposition.Filename: filename
+    filename: String;
+}
+
 entity Assesments : cuid {
     Agenda                           : String(30) @mandatory;
     StartDate                        : Date       @mandatory;

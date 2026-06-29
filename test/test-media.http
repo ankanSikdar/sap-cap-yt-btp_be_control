@@ -1,0 +1,15 @@
+### Step 1: Create the entry with JSON metadata
+POST http://localhost:4004/odata/v4/controller/MediaFile
+Content-Type: application/json
+
+{
+    "mediaType": "pdf",
+    "filename": "MyTest.pdf"
+}
+
+### Step 2: Upload the binary stream via PUT to the media property
+### (Adjust 'content' to match the LargeBinary/Stream property name in your data-model.cds)
+PUT http://localhost:4004/odata/v4/controller/MediaFile('af16e414-5b87-4ed3-bb9c-2b6b9103c093')/content
+Content-Type: application/pdf
+
+< ../srv/test.pdf

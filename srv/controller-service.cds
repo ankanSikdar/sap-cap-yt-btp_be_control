@@ -14,6 +14,8 @@ service ControllerService {
 
     @readonly
     entity Controllers as projection on datamodel.Controller;
+
+    entity MediaFile as select from datamodel.Media;
 }
 
 
