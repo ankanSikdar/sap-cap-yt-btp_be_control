@@ -1,7 +1,9 @@
 const cds = require('@sap/cds');
 
 class ControllerService extends cds.ApplicationService {
+
     init() {
+
         this.before("READ", "Controllers", (req) => {
             console.log('BEFORE READ Request: ', req);
         })
@@ -35,8 +37,41 @@ class ControllerService extends cds.ApplicationService {
             }
         })
 
+        this.after("READ", "Assesments", (results, req) => {
+
+            results.forEach(item => {
+                let ls_status_info = calculateStatus(item);
+
+                item.OverallStatus = ls_status_info.OverallStatus;
+                item.OverallStatusCriticality = ls_status_info.OverallStatusCriticality;
+            })
+        })
+
         return super.init();
     }
 }
+
+function calculateStatus(data) {
+    if (!data.StartDate || !data.EndDate || !data.DueDate) {
+        return {
+            "OverallStatus": "In Preparation",
+            "OverallStatusCriticality": 0
+        }
+    } else {
+        let lv_today = new Date();
+        lv_today.setHours(0, 0, 0, 0);
+
+        let lv_dueDate = new Date(data.DueDate);
+        lv_dueDate.setHours(0, 0, 0, 0);
+
+        return (lv_dueDate < lv_today) ? {
+            "OverallStatus": "Overdue",
+            "OverallStatusCriticality": 1,
+        } : {
+            "OverallStatus": "On Track",
+            "OverallStatusCriticality": 3,
+        }
+    }
+};
 
 module.exports = ControllerService;
