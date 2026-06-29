@@ -1,4 +1,5 @@
 const cds = require('@sap/cds');
+const actionHandler = require('../srv/ActionHandler');
 
 class ControllerService extends cds.ApplicationService {
 
@@ -68,6 +69,8 @@ class ControllerService extends cds.ApplicationService {
                 item.OverallStatusCriticality = ls_status_info.OverallStatusCriticality;
             })
         })
+
+        this.on('MarkAsObsolete', actionHandler.MarkAsObsolete);
 
         return super.init();
     }
