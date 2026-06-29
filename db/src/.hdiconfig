@@ -1,0 +1,23 @@
+{
+  "plugin_version": "2.0.18.0",
+  "file_suffixes": {
+    "cds": {
+      "plugin_name": "com.sap.cds.hdi.plugin"
+    },
+    "hdbgrants": {
+      "plugin_name": "com.sap.hana.di.grants"
+    },
+    "hdbsynonym": {
+      "plugin_name": "com.sap.hana.di.synonym"
+    },
+    "hdbtable": {
+      "plugin_name": "com.sap.hana.di.table"
+    },
+    "hdbview": {
+      "plugin_name": "com.sap.hana.di.view"
+    },
+    "hdbprocedure": {
+        "plugin_name": "com.sap.hana.di.procedure"
+    }
+  }
+}

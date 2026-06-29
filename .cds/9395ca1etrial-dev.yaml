@@ -1,0 +1,16 @@
+name: 9395ca1etrial-dev
+btpUrl: https://cli.btp.cloud.sap
+globalAccount: 9395ca1etrial
+globalAccountId: 32cd4778-ad44-403e-8ef4-cdda0b6804cb
+globalAccountSubdomain: 9395ca1etrial-ga
+subaccount: trial
+subaccountId: 7b396b53-7a3a-49a8-85bb-5a1071d0a178
+subaccountSubdomain: 9395ca1etrial
+subaccountRegion: us10
+cloudProvider: cf
+cfLandscape: cf-us10-001
+cfUrl: https://api.cf.us10-001.hana.ondemand.com
+cfOrg: 9395ca1etrial
+cfOrgId: a60eb8f5-a6b2-4cb1-a80c-2d38bd8ffd22
+cfSpace: dev
+cfSpaceId: 26a2f1dd-d105-456f-82bb-4f5b83b8964b
