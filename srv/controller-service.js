@@ -7,10 +7,32 @@ class ControllerService extends cds.ApplicationService {
         this.before("READ", "Controllers", (req) => {
             console.log('BEFORE READ Request: ', req);
         })
-        this.on("READ", "Controllers", (req, next) => {
+        this.on("READ", "Controllers", async (req, next) => {
+            // Connect to the DB Table
+            const { Assesments } = cds.entities('com.cntrl');
+
+            // Initialize the transaction
+            const tx = cds.transaction(req);
+
+            const assesments = await tx.run(
+                SELECT .from(Assesments)
+            );
+
+            let aJSONOutput = [];
+            assesments.forEach(item => {
+                aJSONOutput.push({
+                    "ID": Math.floor(Math.random() * 100),
+                    "Name": item.Agenda,
+                    "Description": `Start Date: ${item.StartDate}, End Date: ${item.EndDate}`
+                })
+            })
+
+            return aJSONOutput;
+
+
             console.log('ON READ Request: ', req);
             console.log('ON READ Next: ', next);
-            return next();      // Default exection will continue
+            // return next();      // Default exection will continue
         })
         this.after("READ", "Controllers", (results, req) => {
             console.log('AFTER READ Request: ', req);
